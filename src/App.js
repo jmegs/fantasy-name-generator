@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      input: "",
+      output: ""
+    }
+  }
+
+  handleChange = input => {
+    this.setState({ input })
+  }
+
+  alphabetize = input => {
+    const alpha = str => str.split("").sort().join("")
+    let words = input.split(" ")
+    let output = words
+      .map(word => {
+        return alpha(word)
+      })
+      .join(" ")
+    return output
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <input
+          type="text"
+          name="input"
+          placeholder="Type your name"
+          onChange={e => this.handleChange(e.target.value)}
+        />
+        <h2>
+          {this.output}
+        </h2>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
