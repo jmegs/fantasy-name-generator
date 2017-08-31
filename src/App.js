@@ -31,8 +31,8 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const name = this.alphabetize(this.state.input)
-    this.setState({ input: "" })
     this.setState({ output: name })
+    this.setState({ input: "" })
   }
 
   render() {
