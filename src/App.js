@@ -2,12 +2,20 @@ import React, { Component } from "react"
 import {
   Wrapper,
   Title,
+  Version,
   FormField,
   Label,
   Intro,
   Name,
   Credits
 } from "./Styled"
+
+const intros = [
+  "Go forth and conquer",
+  "You're our only hope",
+  "I dub thee",
+  "Arise!"
+]
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +45,20 @@ class App extends Component {
     return output
   }
 
+  titleCase = str => {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map(function(word) {
+        return word.replace(word[0], word[0].toUpperCase())
+      })
+      .join(" ")
+  }
+
+  randomFromArray = arr => {
+    return arr[Math.floor(Math.random() * arr.length)]
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const name = this.alphabetize(this.state.input)
@@ -52,9 +74,8 @@ class App extends Component {
   renderName = () => {
     return (
       <div>
-        <Intro>Go forth and conquer</Intro>
-
-        <Name>{this.state.output}</Name>
+        <Intro>{this.randomFromArray(intros)}</Intro>
+        <Name>{this.titleCase(this.state.output)}</Name>
       </div>
     )
   }
@@ -62,8 +83,10 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Fantasy Name Generator</Title>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <Title>
+          Fantasy Name Generator <Version>v1.0</Version>
+        </Title>
+        <form onSubmit={e => this.handleSubmit(e)} autoComplete="off">
           <FormField
             type="text"
             name="input"
@@ -71,12 +94,11 @@ class App extends Component {
             onFocus={this.resetOutput}
             onChange={e => this.handleChange(e.target.value)}
           />
-          <Label htmlFor="input">Player name</Label>
+          <Label htmlFor="input">👆 enter player name</Label>
           {/* <button type="submit">Generate Name</button> */}
         </form>
         {this.state.output != null && this.renderName()}
         <Credits>
-          Made by <a href="http://twitter.com/jmegs">@jmegs</a>.
           <p>
             Inspired by{" "}
             <a href="https://twitter.com/DeaExLena/status/894421568343781376">
@@ -85,6 +107,7 @@ class App extends Component {
             </a>{" "}
             tweet by <a href="https://twitter.com/DeaExLena">@DeaExLena</a>.
           </p>
+          Made by <a href="http://twitter.com/jmegs">@jmegs</a>.
         </Credits>
       </Wrapper>
     )

@@ -18,6 +18,13 @@ export const Title = styled.h2`
   font-weight: 700;
 `
 
+export const Version = styled.span`
+  font-family: "SF Mono", monospace;
+  font-size: 14px;
+  color: #ccc;
+  font-weight: 200;
+`
+
 export const FormField = styled.input`
   display: block;
   padding: 0;
@@ -26,7 +33,13 @@ export const FormField = styled.input`
   border: none;
   height: 56px;
   font-size: 24px;
+  font-family: "Iowan Old Style", serif;
   border-bottom: 1px solid #111;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid tomato;
+  }
 `
 const fadeIn = keyframes`
   from {
@@ -40,7 +53,8 @@ const fadeIn = keyframes`
 export const Label = styled.label`
   display: block;
   font-family: sans-serif;
-  margin-top: 4px;
+  font-size: 14px;
+  margin-top: 8px;
   margin-bottom: 72px;
 `
 
@@ -67,5 +81,10 @@ export const Credits = styled.div`
 
   p {
     margin: 4px 0;
+  }
+
+  a {
+    color: #2e2e2e;
+    text-decoration: none;
   }
 `
