@@ -11,8 +11,6 @@ import {
 } from "./Styled"
 import ReactGA from "react-ga"
 
-
-
 const intros = [
   "Go forth and conquer",
   "You're our only hope",
@@ -27,12 +25,11 @@ class App extends Component {
       input: "",
       output: null
     }
+    // Adds GA Tracking Number
+    ReactGA.initialize("UA-11325048-14")
+    // logs a pageview
+    ReactGA.pageview(window.location.pathname)
   }
-
-  // Adds GA Tracking Number
-  ReactGA.initialize("UA-11325048-14")
-  // logs a pageview
-  ReactGA.pageview(window.location.pathname)
 
   handleChange = input => {
     this.setState({ input })
