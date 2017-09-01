@@ -94,7 +94,12 @@ class App extends Component {
             onFocus={this.resetOutput}
             onChange={e => this.handleChange(e.target.value)}
           />
-          <Label htmlFor="input">👆 enter player name</Label>
+          <Label htmlFor="input">
+            <span role="img" aria-label="up">
+              👆
+            </span>{" "}
+            enter player name
+          </Label>
           {/* <button type="submit">Generate Name</button> */}
         </form>
         {this.state.output != null && this.renderName()}
