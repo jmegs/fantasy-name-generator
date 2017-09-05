@@ -3,7 +3,9 @@ import {
   Wrapper,
   Title,
   Version,
+  Form,
   FormField,
+  Button,
   Label,
   Intro,
   Name,
@@ -91,7 +93,7 @@ class App extends Component {
         <Title>
           Fantasy Name Generator <Version>v1.0</Version>
         </Title>
-        <form onSubmit={e => this.handleSubmit(e)} autoComplete="off">
+        <Form onSubmit={e => this.handleSubmit(e)} autoComplete="off">
           <FormField
             type="text"
             name="input"
@@ -105,8 +107,10 @@ class App extends Component {
             </span>{" "}
             enter player name
           </Label>
-          {/* <button type="submit">Generate Name</button> */}
-        </form>
+          {this.state.output == null && (
+            <Button type="submit">Generate Name</Button>
+          )}
+        </Form>
         {this.state.output != null && this.renderName()}
         <Credits>
           <p>

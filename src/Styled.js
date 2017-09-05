@@ -24,6 +24,7 @@ export const Version = styled.span`
   color: #ccc;
   font-weight: 200;
 `
+export const Form = styled.form`margin-bottom: 72px;`
 
 export const FormField = styled.input`
   display: block;
@@ -41,6 +42,14 @@ export const FormField = styled.input`
     border-bottom: 1px solid tomato;
   }
 `
+
+export const Button = styled.button`
+  font-size: 16px;
+  border: 1px solid tomato;
+  background: none;
+  padding: 16px;
+  margin: 32px 0 16px 0;
+`
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -55,7 +64,6 @@ export const Label = styled.label`
   font-family: sans-serif;
   font-size: 14px;
   margin-top: 8px;
-  margin-bottom: 72px;
 `
 
 export const Intro = styled.div`
